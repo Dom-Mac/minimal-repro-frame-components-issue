@@ -9,6 +9,9 @@ export const app = new Frog({
 
 app.use("/*", serveStatic({ root: "./public" }))
 
+/**
+ * @dev Initial -- plain HTML component
+ */
 app.frame("/", (c) => {
   return c.res({
     action: "/working",
@@ -34,6 +37,9 @@ app.frame("/", (c) => {
   })
 })
 
+/**
+ * @dev Working -- custom component with child
+ */
 app.frame("/working", (c) => {
   return c.res({
     action: "/issue",
@@ -42,6 +48,10 @@ app.frame("/working", (c) => {
   })
 })
 
+/**
+ * @dev Issue -- custom self closing component
+ *      - This component is not working as expected
+ */
 app.frame("/issue", (c) => {
   return c.res({
     action: "/",
